@@ -1,0 +1,15 @@
+*.pyc
+*.js
+*.css
+__pycache__/
+env/
+*min.css
+*min.js
+*.png
+*.jpg
+css/
+js/
+images/
+*.bak
+*.dat
+*.dir
