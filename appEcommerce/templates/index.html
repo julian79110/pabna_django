@@ -4,7 +4,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Home Three || Pabna</title>
+        <title>Index || Pabna</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -81,7 +81,7 @@
 													</div>
 												</div>
 											</li>
-											<li><a href="shop.html">Categorias</a>
+											<li><a href={% url 'shop' %}>Categorias</a>
 												<div class="mega-menu mega-menu-2">
 													<span>
 														<a href="shop.html" class="mega-title">WOMEN CLOTH </a>
@@ -109,7 +109,8 @@
 													</span>
 												</div>
 											</li>
-											<li><a href="contact.html">contactanos</a></li>
+											<li><a href={% url 'contact' %}>contactanos</a></li>
+											<li><a href={% url 'productos' %}>Registrar Producto</a></li>
 										</ul>
 									</nav>
 								</div>
@@ -117,7 +118,7 @@
 							<div class="col-md-2 col-sm-8 col-xs-7 header-right">
 								<div class="my-cart">
 									<div class="total-cart">
-										<a href="cart.html">
+										<a href={% url 'cart' %}>
 											<i class="fa fa-shopping-cart"></i>
 											<span>2</span>
 										</a>
@@ -152,7 +153,7 @@
 											<div class="subtotal-price">£300.00</div>
 										</li>
 										<li>
-											<a class="cart-button" href="cart.html">Ver Carro</a>
+											<a class="cart-button" href={% url 'cart' %}>Ver Carro</a>
 										</li>
 									</ul>
 								</div>
@@ -210,7 +211,7 @@
 											</ul>
 										</li>
 										<li><a href="shop.html">Footwear </a></li>
-										<li><a href="contact.html">Contact</a></li>
+										<li><a href={% url 'contact' %}>Contact</a></li>
 									</ul>
 								</nav>
 							</div>
