@@ -140,37 +140,10 @@
 									<div class="total-cart">
 										<a href={% url 'cart' %}>
 											<i class="fa fa-shopping-cart"></i>
-											<span>2</span>
 										</a>								
 									</div>
 									<ul>
-										<li>
-											<div class="cart-img">
-												<a href="#"><img alt="" src="img/cart/1.jpg"></a>
-											</div>
-											<div class="cart-info">
-												<h4><a href="#">Vestibulum suscipit</a></h4>
-												<span>£165.00 <span>x 1</span></span>
-											</div>
-											<div class="del-icon">
-												<i class="fa fa-times-circle"></i>
-											</div>
-										</li>
-										<li>
-											<div class="cart-img">
-												<a href="#"><img alt="" src="img/cart/1.jpg"></a>
-											</div>
-											<div class="cart-info">
-												<h4><a href="#">Vestibulum suscipit</a></h4>
-												<span>£165.00 <span>x 1</span></span>
-											</div>
-											<div class="del-icon">
-												<i class="fa fa-times-circle"></i>
-											</div>
-										</li>
 										<li class="cart-border">
-											<div class="subtotal-text">Subtotal: </div>
-											<div class="subtotal-price">£300.00</div>
 										</li>
 										<li>
 											<a class="cart-button" href="cart.html">Ver Carro</a>
@@ -416,12 +389,16 @@
 								<div role="tabpanel" class="tab-pane active" id="home">
 									<div class="row">
 										<!-- single-product start -->
+										{% for p in productos %}
 										<div class="col-md-4 col-sm-4">
 											<div class="single-product">
 												<div class="product-img">
 													<a href="product-details.html">
-														<img src={% static 'img/product/5.jpg' %} alt="" />
-														<img class="secondary-img" src="img/product/2.jpg" alt="" />
+													{% if p.imagen %}
+														<img src={{ p.imagen.url }} width="480px" height="606px"/>
+													{% else %}
+														<h1>No Photo</h1>
+													{% endif %}
 													</a>
 													<div class="product-action">
 														<div class="button-top">
@@ -429,447 +406,50 @@
 															<a href="#" ><i class="fa fa-heart"></i></a>
 														</div>
 														<div class="button-cart">
-															<button><i class="fa fa-shopping-cart"></i> add to cart</button>
-														</div>
+														<a href="{% url 'agregar_al_carrito' p.id %}" class="button-cart">
+															<i class="fa fa-shopping-cart"></i> add to cart
+														</a>
+													</div>
 													</div>
 												</div>
 												<div class="product-content">
-													<h3><a href="product-details.html">Lorem ipsum dolor</a></h3>
+													<h3><a href="product-details.html">{{p.nombre}}</a></h3>
 													<div class="price">
-														<span>$80.00</span>
-														<span class="old">$90.11</span>
+														<span>Precio: {{p.precio}}</span>
+														{% comment %} <span class="old">$90.11</span> {% endcomment %}
 													</div>
 												</div>
 											</div>
 										</div>
-										<!-- single-product end -->	
-										<!-- single-product start -->
-										<div class="col-md-4 col-sm-4">
-											<div class="single-product">
-												<div class="product-img">
-													<a href="product-details.html">
-														<img src={% static 'img/product/5.jpg' %} alt="" />
-														<img class="secondary-img" src="img/product/11.jpg" alt="" />
-													</a>
-													<span class="tag-line">new</span>
-													<div class="product-action">
-														<div class="button-top">
-															<a href="#" data-toggle="modal" data-target="#productModal"><i class="fa fa-search"></i></a>
-															<a href="#" ><i class="fa fa-heart"></i></a>
-														</div>
-														<div class="button-cart">
-															<button><i class="fa fa-shopping-cart"></i> add to cart</button>
-														</div>
-													</div>
-												</div>
-												<div class="product-content">
-													<h3><a href="product-details.html">Lorem ipsum dolor</a></h3>
-													<div class="price">
-														<span>$80.00</span>
-														<span class="old">$90.11</span>
-													</div>
-												</div>
-											</div>
-										</div>
-										<!-- single-product end -->	
-										<!-- single-product start -->
-										<div class="col-md-4 col-sm-4">
-											<div class="single-product">
-												<div class="product-img">
-													<a href="product-details.html">
-														<img src={% static 'img/product/5.jpg' %} alt="" />
-														<img class="secondary-img" src="img/product/11.jpg" alt="" />
-													</a>
-													<span class="tag-line">new</span>
-													<div class="product-action">
-														<div class="button-top">
-															<a href="#" data-toggle="modal" data-target="#productModal"><i class="fa fa-search"></i></a>
-															<a href="#" ><i class="fa fa-heart"></i></a>
-														</div>
-														<div class="button-cart">
-															<button><i class="fa fa-shopping-cart"></i> add to cart</button>
-														</div>
-													</div>
-												</div>
-												<div class="product-content">
-													<h3><a href="product-details.html">Lorem ipsum dolor</a></h3>
-													<div class="price">
-														<span>$80.00</span>
-														<span class="old">$90.11</span>
-													</div>
-												</div>
-											</div>
-										</div>
-										<!-- single-product end -->	
-										<!-- single-product start -->
-										<div class="col-md-4 col-sm-4">
-											<div class="single-product">
-												<div class="product-img">
-													<a href="product-details.html">
-														<img src={% static 'img/product/5.jpg' %} alt="" />
-														<img class="secondary-img" src="img/product/6.jpg" alt="" />
-													</a>
-													<span class="tag-line">new</span>
-													<div class="product-action">
-														<div class="button-top">
-															<a href="#" data-toggle="modal" data-target="#productModal"><i class="fa fa-search"></i></a>
-															<a href="#" ><i class="fa fa-heart"></i></a>
-														</div>
-														<div class="button-cart">
-															<button><i class="fa fa-shopping-cart"></i> add to cart</button>
-														</div>
-													</div>
-												</div>
-												<div class="product-content">
-													<h3><a href="product-details.html">Lorem ipsum dolor</a></h3>
-													<div class="price">
-														<span>$80.00</span>
-														<span class="old">$90.11</span>
-													</div>
-												</div>
-											</div>
-										</div>
-										<!-- single-product end -->	
-										<!-- single-product start -->
-										<div class="col-md-4 col-sm-4">
-											<div class="single-product">
-												<div class="product-img">
-													<a href="product-details.html">
-														<img src={% static 'img/product/5.jpg' %} alt="" />
-														<img class="secondary-img" src="img/product/8.jpg" alt="" />
-													</a>
-													<span class="tag-line">new</span>
-													<div class="product-action">
-														<div class="button-top">
-															<a href="#" data-toggle="modal" data-target="#productModal"><i class="fa fa-search"></i></a>
-															<a href="#" ><i class="fa fa-heart"></i></a>
-														</div>
-														<div class="button-cart">
-															<button><i class="fa fa-shopping-cart"></i> add to cart</button>
-														</div>
-													</div>
-												</div>
-												<div class="product-content">
-													<h3><a href="product-details.html">Lorem ipsum dolor</a></h3>
-													<div class="price">
-														<span>$80.00</span>
-														<span class="old">$90.11</span>
-													</div>
-												</div>
-											</div>
-										</div>
-										<!-- single-product end -->	
-										<!-- single-product start -->
-										<div class="col-md-4 col-sm-4">
-											<div class="single-product">
-												<div class="product-img">
-													<a href="product-details.html">
-														<img src={% static 'img/product/5.jpg' %} alt="" />
-														<img class="secondary-img" src="img/product/10.jpg" alt="" />
-													</a>
-													<span class="tag-line">new</span>
-													<div class="product-action">
-														<div class="button-top">
-															<a href="#" data-toggle="modal" data-target="#productModal"><i class="fa fa-search"></i></a>
-															<a href="#" ><i class="fa fa-heart"></i></a>
-														</div>
-														<div class="button-cart">
-															<button><i class="fa fa-shopping-cart"></i> add to cart</button>
-														</div>
-													</div>
-												</div>
-												<div class="product-content">
-													<h3><a href="product-details.html">Lorem ipsum dolor</a></h3>
-													<div class="price">
-														<span>$80.00</span>
-														<span class="old">$90.11</span>
-													</div>
-												</div>
-											</div>
-										</div>
-										<!-- single-product end -->	
-										<!-- single-product start -->
-										<div class="col-md-4 col-sm-4">
-											<div class="single-product">
-												<div class="product-img">
-													<a href="product-details.html">
-														<img src={% static 'img/product/5.jpg' %} alt="" />
-														<img class="secondary-img" src="img/product/12.jpg" alt="" />
-													</a>
-													<span class="tag-line">new</span>
-													<div class="product-action">
-														<div class="button-top">
-															<a href="#" data-toggle="modal" data-target="#productModal"><i class="fa fa-search"></i></a>
-															<a href="#" ><i class="fa fa-heart"></i></a>
-														</div>
-														<div class="button-cart">
-															<button><i class="fa fa-shopping-cart"></i> add to cart</button>
-														</div>
-													</div>
-												</div>
-												<div class="product-content">
-													<h3><a href="product-details.html">Lorem ipsum dolor</a></h3>
-													<div class="price">
-														<span>$80.00</span>
-														<span class="old">$90.11</span>
-													</div>
-												</div>
-											</div>
-										</div>
-										<!-- single-product end -->	
-										<!-- single-product start -->
-										<div class="col-md-4 col-sm-4">
-											<div class="single-product">
-												<div class="product-img">
-													<a href="product-details.html">
-														<img src={% static 'img/product/5.jpg' %} alt="" />
-														<img class="secondary-img" src="img/product/22.jpg" alt="" />
-													</a>
-													<span class="tag-line">new</span>
-													<div class="product-action">
-														<div class="button-top">
-															<a href="#" data-toggle="modal" data-target="#productModal"><i class="fa fa-search"></i></a>
-															<a href="#" ><i class="fa fa-heart"></i></a>
-														</div>
-														<div class="button-cart">
-															<button><i class="fa fa-shopping-cart"></i> add to cart</button>
-														</div>
-													</div>
-												</div>
-												<div class="product-content">
-													<h3><a href="product-details.html">Lorem ipsum dolor</a></h3>
-													<div class="price">
-														<span>$80.00</span>
-														<span class="old">$90.11</span>
-													</div>
-												</div>
-											</div>
-										</div>
-										<!-- single-product end -->	
-										<!-- single-product start -->
-										<div class="col-md-4 col-sm-4">
-											<div class="single-product">
-												<div class="product-img">
-													<a href="product-details.html">
-														<img src={% static 'img/product/5.jpg' %} alt="" />
-														<img class="secondary-img" src="img/product/20.jpg" alt="" />
-													</a>
-													<span class="tag-line">new</span>
-													<div class="product-action">
-														<div class="button-top">
-															<a href="#" data-toggle="modal" data-target="#productModal"><i class="fa fa-search"></i></a>
-															<a href="#" ><i class="fa fa-heart"></i></a>
-														</div>
-														<div class="button-cart">
-															<button><i class="fa fa-shopping-cart"></i> add to cart</button>
-														</div>
-													</div>
-												</div>
-												<div class="product-content">
-													<h3><a href="product-details.html">Lorem ipsum dolor</a></h3>
-													<div class="price">
-														<span>$80.00</span>
-														<span class="old">$90.11</span>
-													</div>
-												</div>
-											</div>
-										</div>
-										<!-- single-product end -->	
-										<!-- single-product start -->
-										<div class="col-md-4 col-sm-4">
-											<div class="single-product">
-												<div class="product-img">
-													<a href="product-details.html">
-														<img src={% static 'img/product/5.jpg' %} alt="" />
-														<img class="secondary-img" src="img/product/18.jpg" alt="" />
-													</a>
-													<span class="tag-line">new</span>
-													<div class="product-action">
-														<div class="button-top">
-															<a href="#" data-toggle="modal" data-target="#productModal"><i class="fa fa-search"></i></a>
-															<a href="#" ><i class="fa fa-heart"></i></a>
-														</div>
-														<div class="button-cart">
-															<button><i class="fa fa-shopping-cart"></i> add to cart</button>
-														</div>
-													</div>
-												</div>
-												<div class="product-content">
-													<h3><a href="product-details.html">Lorem ipsum dolor</a></h3>
-													<div class="price">
-														<span>$80.00</span>
-														<span class="old">$90.11</span>
-													</div>
-												</div>
-											</div>
-										</div>
-										<!-- single-product end -->	
-										<!-- single-product start -->
-										<div class="col-md-4 col-sm-4">
-											<div class="single-product">
-												<div class="product-img">
-													<a href="product-details.html">
-														<img src={% static 'img/product/5.jpg' %} alt="" />
-														<img class="secondary-img" src="img/product/14.jpg" alt="" />
-													</a>
-													<span class="tag-line">new</span>
-													<div class="product-action">
-														<div class="button-top">
-															<a href="#" data-toggle="modal" data-target="#productModal"><i class="fa fa-search"></i></a>
-															<a href="#" ><i class="fa fa-heart"></i></a>
-														</div>
-														<div class="button-cart">
-															<button><i class="fa fa-shopping-cart"></i> add to cart</button>
-														</div>
-													</div>
-												</div>
-												<div class="product-content">
-													<h3><a href="product-details.html">Lorem ipsum dolor</a></h3>
-													<div class="price">
-														<span>$80.00</span>
-														<span class="old">$90.11</span>
-													</div>
-												</div>
-											</div>
-										</div>
-										<!-- single-product end -->	
-										<!-- single-product start -->
-										<div class="col-md-4 col-sm-4">
-											<div class="single-product">
-												<div class="product-img">
-													<a href="product-details.html">
-														<img src={% static 'img/product/5.jpg' %} alt="" />
-														<img class="secondary-img" src="img/product/15.jpg" alt="" />
-													</a>
-													<span class="tag-line">new</span>
-													<div class="product-action">
-														<div class="button-top">
-															<a href="#" data-toggle="modal" data-target="#productModal"><i class="fa fa-search"></i></a>
-															<a href="#" ><i class="fa fa-heart"></i></a>
-														</div>
-														<div class="button-cart">
-															<button><i class="fa fa-shopping-cart"></i> add to cart</button>
-														</div>
-													</div>
-												</div>
-												<div class="product-content">
-													<h3><a href="product-details.html">Lorem ipsum dolor</a></h3>
-													<div class="price">
-														<span>$80.00</span>
-														<span class="old">$90.11</span>
-													</div>
-												</div>
-											</div>
-										</div>
-										<!-- single-product end -->	
-										<!-- single-product start -->
-										<div class="col-md-4 col-sm-4">
-											<div class="single-product">
-												<div class="product-img">
-													<a href="product-details.html">
-														<img src={% static 'img/product/5.jpg' %} alt="" />
-														<img class="secondary-img" src="img/product/17.jpg" alt="" />
-													</a>
-													<span class="tag-line">new</span>
-													<div class="product-action">
-														<div class="button-top">
-															<a href="#" data-toggle="modal" data-target="#productModal"><i class="fa fa-search"></i></a>
-															<a href="#" ><i class="fa fa-heart"></i></a>
-														</div>
-														<div class="button-cart">
-															<button><i class="fa fa-shopping-cart"></i> add to cart</button>
-														</div>
-													</div>
-												</div>
-												<div class="product-content">
-													<h3><a href="product-details.html">Lorem ipsum dolor</a></h3>
-													<div class="price">
-														<span>$80.00</span>
-														<span class="old">$90.11</span>
-													</div>
-												</div>
-											</div>
-										</div>
-										<!-- single-product end -->	
-										<!-- single-product start -->
-										<div class="col-md-4 col-sm-4">
-											<div class="single-product">
-												<div class="product-img">
-													<a href="product-details.html">
-														<img src={% static 'img/product/5.jpg' %} alt="" />
-														<img class="secondary-img" src="img/product/11.jpg" alt="" />
-													</a>
-													<span class="tag-line">new</span>
-													<div class="product-action">
-														<div class="button-top">
-															<a href="#" data-toggle="modal" data-target="#productModal"><i class="fa fa-search"></i></a>
-															<a href="#" ><i class="fa fa-heart"></i></a>
-														</div>
-														<div class="button-cart">
-															<button><i class="fa fa-shopping-cart"></i> add to cart</button>
-														</div>
-													</div>
-												</div>
-												<div class="product-content">
-													<h3><a href="product-details.html">Lorem ipsum dolor</a></h3>
-													<div class="price">
-														<span>$80.00</span>
-														<span class="old">$90.11</span>
-													</div>
-												</div>
-											</div>
-										</div>
-										<!-- single-product end -->	
-										<!-- single-product start -->
-										<div class="col-md-4 col-sm-4">
-											<div class="single-product">
-												<div class="product-img">
-													<a href="product-details.html">
-														<img src={% static 'img/product/7.jpg' %} alt="" />
-														<img class="secondary-img" src="img/product/11.jpg" alt="" />
-													</a>
-													<span class="tag-line">new</span>
-													<div class="product-action">
-														<div class="button-top">
-															<a href="#" data-toggle="modal" data-target="#productModal"><i class="fa fa-search"></i></a>
-															<a href="#" ><i class="fa fa-heart"></i></a>
-														</div>
-														<div class="button-cart">
-															<button><i class="fa fa-shopping-cart"></i> add to cart</button>
-														</div>
-													</div>
-												</div>
-												<div class="product-content">
-													<h3><a href="product-details.html">Lorem ipsum dolor</a></h3>
-													<div class="price">
-														<span>$80.00</span>
-														<span class="old">$90.11</span>
-													</div>
-												</div>
-											</div>
-										</div>
-										<!-- single-product end -->										
+										{% endfor %}
+										<!-- single-product end -->								
 									</div>
 								</div>
+								<!--view as-->
+								
 								<div role="tabpanel" class="tab-pane" id="profile">
 									<div class="row shop-list">
 										<!-- single-product start -->
+										{% for p in productos %}
 										<div class="col-md-12">
 											<div class="single-product">
 												<div class="product-img">
 													<a href="product-details.html">
-														<img src={% static 'img/product/5.jpg' %} alt="" />
-														<img class="secondary-img" src="img/product/11.jpg" alt="" />
+													{% if p.imagen %}
+														<img src={{p.imagen.url}} alt="" />
+													{% else %}
+														<h1>No Photo</h1>
+													{% endif %}
 													</a>
 													<span class="tag-line">new</span>
 												</div>
 												<div class="product-content">
-													<h3><a href="product-details.html">Lorem ipsum dolor</a></h3>
+													<h3><a href="product-details.html">{{p.nombre}}</a></h3>
 													<div class="price">
-														<span>$80.00</span>
-														<span class="old">$90.11</span>
+														<span>{{p.precio}}</span>
+														{% comment %} <span class="old">$90.11</span> {% endcomment %}
 													</div>
-													<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fringilla augue nec est tristique auctor. Donec non est at libero vulputate rutrum. Morbi ornare lectus quis justo gravida semper. Nulla tellus mi, vulputate adipiscing cursus eu, suscipit id nulla.</p>
+													<p>{{p.descripcion}}</p>
 													<div class="product-action">
 														<div class="button-top">
 															<a href="#" data-toggle="modal" data-target="#productModal"><i class="fa fa-search"></i></a>
@@ -883,246 +463,8 @@
 											</div>
 										</div>
 										<!-- single-product end -->	
-										<!-- single-product start -->
-										<div class="col-md-12">
-											<div class="single-product">
-												<div class="product-img">
-													<a href="product-details.html">
-														<img src={% static 'img/product/5.jpg' %} alt="" />
-														<img class="secondary-img" src="img/product/11.jpg" alt="" />
-													</a>
-													<span class="tag-line">new</span>
-												</div>
-												<div class="product-content">
-													<h3><a href="product-details.html">Lorem ipsum dolor</a></h3>
-													<div class="price">
-														<span>$80.00</span>
-														<span class="old">$90.11</span>
-													</div>
-													<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fringilla augue nec est tristique auctor. Donec non est at libero vulputate rutrum. Morbi ornare lectus quis justo gravida semper. Nulla tellus mi, vulputate adipiscing cursus eu, suscipit id nulla.</p>
-													<div class="product-action">
-														<div class="button-top">
-															<a href="#" data-toggle="modal" data-target="#productModal"><i class="fa fa-search"></i></a>
-															<a href="#" ><i class="fa fa-heart"></i></a>
-														</div>
-														<div class="button-cart">
-															<button><i class="fa fa-shopping-cart"></i> add to cart</button>
-														</div>
-													</div>													
-												</div>
-											</div>
-										</div>
-										<!-- single-product end -->	
-										<!-- single-product start -->
-										<div class="col-md-12">
-											<div class="single-product">
-												<div class="product-img">
-													<a href="product-details.html">
-														<img src={% static 'img/product/5.jpg' %} alt="" />
-														<img class="secondary-img" src="img/product/11.jpg" alt="" />
-													</a>
-													<span class="tag-line">new</span>
-												</div>
-												<div class="product-content">
-													<h3><a href="product-details.html">Lorem ipsum dolor</a></h3>
-													<div class="price">
-														<span>$80.00</span>
-														<span class="old">$90.11</span>
-													</div>
-													<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fringilla augue nec est tristique auctor. Donec non est at libero vulputate rutrum. Morbi ornare lectus quis justo gravida semper. Nulla tellus mi, vulputate adipiscing cursus eu, suscipit id nulla.</p>
-													<div class="product-action">
-														<div class="button-top">
-															<a href="#" data-toggle="modal" data-target="#productModal"><i class="fa fa-search"></i></a>
-															<a href="#" ><i class="fa fa-heart"></i></a>
-														</div>
-														<div class="button-cart">
-															<button><i class="fa fa-shopping-cart"></i> add to cart</button>
-														</div>
-													</div>													
-												</div>
-											</div>
-										</div>
-										<!-- single-product end -->	
-										<!-- single-product start -->
-										<div class="col-md-12">
-											<div class="single-product">
-												<div class="product-img">
-													<a href="product-details.html">
-														<img src={% static 'img/product/5.jpg' %} alt="" />
-														<img class="secondary-img" src="img/product/11.jpg" alt="" />
-													</a>
-													<span class="tag-line">new</span>
-												</div>
-												<div class="product-content">
-													<h3><a href="product-details.html">Lorem ipsum dolor</a></h3>
-													<div class="price">
-														<span>$80.00</span>
-														<span class="old">$90.11</span>
-													</div>
-													<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fringilla augue nec est tristique auctor. Donec non est at libero vulputate rutrum. Morbi ornare lectus quis justo gravida semper. Nulla tellus mi, vulputate adipiscing cursus eu, suscipit id nulla.</p>
-													<div class="product-action">
-														<div class="button-top">
-															<a href="#" data-toggle="modal" data-target="#productModal"><i class="fa fa-search"></i></a>
-															<a href="#" ><i class="fa fa-heart"></i></a>
-														</div>
-														<div class="button-cart">
-															<button><i class="fa fa-shopping-cart"></i> add to cart</button>
-														</div>
-													</div>													
-												</div>
-											</div>
-										</div>
-										<!-- single-product end -->	
-										<!-- single-product start -->
-										<div class="col-md-12">
-											<div class="single-product">
-												<div class="product-img">
-													<a href="product-details.html">
-														<img src={% static 'img/product/5.jpg' %} alt="" />
-														<img class="secondary-img" src="img/product/11.jpg" alt="" />
-													</a>
-													<span class="tag-line">new</span>
-												</div>
-												<div class="product-content">
-													<h3><a href="product-details.html">Lorem ipsum dolor</a></h3>
-													<div class="price">
-														<span>$80.00</span>
-														<span class="old">$90.11</span>
-													</div>
-													<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fringilla augue nec est tristique auctor. Donec non est at libero vulputate rutrum. Morbi ornare lectus quis justo gravida semper. Nulla tellus mi, vulputate adipiscing cursus eu, suscipit id nulla.</p>
-													<div class="product-action">
-														<div class="button-top">
-															<a href="#" data-toggle="modal" data-target="#productModal"><i class="fa fa-search"></i></a>
-															<a href="#" ><i class="fa fa-heart"></i></a>
-														</div>
-														<div class="button-cart">
-															<button><i class="fa fa-shopping-cart"></i> add to cart</button>
-														</div>
-													</div>													
-												</div>
-											</div>
-										</div>
-										<!-- single-product end -->	
-										<!-- single-product start -->
-										<div class="col-md-12">
-											<div class="single-product">
-												<div class="product-img">
-													<a href="product-details.html">
-														<img src={% static 'img/product/5.jpg' %} alt="" />
-														<img class="secondary-img" src="img/product/11.jpg" alt="" />
-													</a>
-													<span class="tag-line">new</span>
-												</div>
-												<div class="product-content">
-													<h3><a href="product-details.html">Lorem ipsum dolor</a></h3>
-													<div class="price">
-														<span>$80.00</span>
-														<span class="old">$90.11</span>
-													</div>
-													<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fringilla augue nec est tristique auctor. Donec non est at libero vulputate rutrum. Morbi ornare lectus quis justo gravida semper. Nulla tellus mi, vulputate adipiscing cursus eu, suscipit id nulla.</p>
-													<div class="product-action">
-														<div class="button-top">
-															<a href="#" data-toggle="modal" data-target="#productModal"><i class="fa fa-search"></i></a>
-															<a href="#" ><i class="fa fa-heart"></i></a>
-														</div>
-														<div class="button-cart">
-															<button><i class="fa fa-shopping-cart"></i> add to cart</button>
-														</div>
-													</div>													
-												</div>
-											</div>
-										</div>
-										<!-- single-product end -->	
-										<!-- single-product start -->
-										<div class="col-md-12">
-											<div class="single-product">
-												<div class="product-img">
-													<a href="product-details.html">
-														<img src={% static 'img/product/5.jpg' %} alt="" />
-														<img class="secondary-img" src="img/product/11.jpg" alt="" />
-													</a>
-													<span class="tag-line">new</span>
-												</div>
-												<div class="product-content">
-													<h3><a href="product-details.html">Lorem ipsum dolor</a></h3>
-													<div class="price">
-														<span>$80.00</span>
-														<span class="old">$90.11</span>
-													</div>
-													<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fringilla augue nec est tristique auctor. Donec non est at libero vulputate rutrum. Morbi ornare lectus quis justo gravida semper. Nulla tellus mi, vulputate adipiscing cursus eu, suscipit id nulla.</p>
-													<div class="product-action">
-														<div class="button-top">
-															<a href="#" data-toggle="modal" data-target="#productModal"><i class="fa fa-search"></i></a>
-															<a href="#" ><i class="fa fa-heart"></i></a>
-														</div>
-														<div class="button-cart">
-															<button><i class="fa fa-shopping-cart"></i> add to cart</button>
-														</div>
-													</div>													
-												</div>
-											</div>
-										</div>
-										<!-- single-product end -->	
-										<!-- single-product start -->
-										<div class="col-md-12">
-											<div class="single-product">
-												<div class="product-img">
-													<a href="product-details.html">
-														<img src={% static 'img/product/9.jpg' %} alt="" />
-														<img class="secondary-img" src="img/product/11.jpg" alt="" />
-													</a>
-													<span class="tag-line">new</span>
-												</div>
-												<div class="product-content">
-													<h3><a href="product-details.html">Lorem ipsum dolor</a></h3>
-													<div class="price">
-														<span>$80.00</span>
-														<span class="old">$90.11</span>
-													</div>
-													<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fringilla augue nec est tristique auctor. Donec non est at libero vulputate rutrum. Morbi ornare lectus quis justo gravida semper. Nulla tellus mi, vulputate adipiscing cursus eu, suscipit id nulla.</p>
-													<div class="product-action">
-														<div class="button-top">
-															<a href="#" data-toggle="modal" data-target="#productModal"><i class="fa fa-search"></i></a>
-															<a href="#" ><i class="fa fa-heart"></i></a>
-														</div>
-														<div class="button-cart">
-															<button><i class="fa fa-shopping-cart"></i> add to cart</button>
-														</div>
-													</div>													
-												</div>
-											</div>
-										</div>
-										<!-- single-product end -->	
-										<!-- single-product start -->
-										<div class="col-md-12">
-											<div class="single-product">
-												<div class="product-img">
-													<a href="product-details.html">
-														<img src={% static 'img/product/5.jpg' %} alt="" />
-														<img class="secondary-img" src="img/product/11.jpg" alt="" />
-													</a>
-													<span class="tag-line">new</span>
-												</div>
-												<div class="product-content">
-													<h3><a href="product-details.html">Lorem ipsum dolor</a></h3>
-													<div class="price">
-														<span>$80.00</span>
-														<span class="old">$90.11</span>
-													</div>
-													<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fringilla augue nec est tristique auctor. Donec non est at libero vulputate rutrum. Morbi ornare lectus quis justo gravida semper. Nulla tellus mi, vulputate adipiscing cursus eu, suscipit id nulla.</p>
-													<div class="product-action">
-														<div class="button-top">
-															<a href="#" data-toggle="modal" data-target="#productModal"><i class="fa fa-search"></i></a>
-															<a href="#" ><i class="fa fa-heart"></i></a>
-														</div>
-														<div class="button-cart">
-															<button><i class="fa fa-shopping-cart"></i> add to cart</button>
-														</div>
-													</div>													
-												</div>
-											</div>
-										</div>
-										<!-- single-product end -->	
+										{% endfor %}
+										
 									</div>
 								</div>
 							</div>

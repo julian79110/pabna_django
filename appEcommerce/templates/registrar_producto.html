@@ -33,7 +33,7 @@
     {% endif %}
     <div class="container">
         <div class="row justify-content-center">
-        <form class="col-md-8 g-3" action="{% url 'create_producto' %}" method="POST" autocomplete="off">
+        <form class="col-md-8 g-3" action="{% url 'create_producto' %}" method="POST" autocomplete="off" enctype="multipart/form-data">
         {% csrf_token %}
         <h1>Registro Productos</h1><br>
           <div class="mb-3">
@@ -54,6 +54,10 @@
                 <option value="si">Si</option>
                 <option value="no">No</option>
               </select>
+          </div>
+          <div class="mb-3">
+              <label for="exampleFormControlInput1" class="form-label">Imagen Producto</label>
+              <input type="file" name="imagen" placeholder="imagen" class="form-control" id="exampleFormControlInput1">
           </div>
           <div class="mb-3">
               <button type="submit" class="btn btn-primary">Registrar</button>
